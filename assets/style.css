@@ -1,0 +1,95 @@
+:root {
+  --night: #07080f;
+  --storm: #121a33;
+  --bolt: #8fd3ff;
+  --sand: #f3c27a;
+  --fire: #f2200c;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0 1.25rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 42%, var(--storm) 0%, transparent 70%),
+    var(--night);
+  color: var(--sand);
+  font-family: "Impact", "Haettenschweiler", "Arial Narrow Bold", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-block: 3rem;
+}
+
+h1 { margin: 0; line-height: 0; }
+
+h1 img {
+  display: block;
+  width: min(92vw, 900px);
+  height: auto;
+  filter: drop-shadow(0 0 2.5rem rgba(143, 211, 255, 0.18));
+  animation: rumble 9s infinite;
+}
+
+.place {
+  margin: 0;
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  letter-spacing: 0.5em;
+  margin-right: -0.5em; /* balance trailing letter-spacing */
+  text-transform: uppercase;
+  color: var(--bolt);
+  text-shadow: 0 0 1rem rgba(143, 211, 255, 0.5);
+}
+
+footer {
+  padding-block: 1.5rem;
+  text-align: center;
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: rgba(243, 194, 122, 0.5);
+}
+footer p { margin: 0; }
+
+/* Occasional lightning flash across the whole sky */
+.flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 70% 20%, rgba(190, 230, 255, 0.35), transparent 60%);
+  opacity: 0;
+  animation: flash 9s infinite;
+}
+
+@keyframes flash {
+  0%, 88%, 100% { opacity: 0; }
+  89%           { opacity: 1; }
+  90%           { opacity: 0.2; }
+  91.5%         { opacity: 0.9; }
+  94%           { opacity: 0; }
+}
+
+@keyframes rumble {
+  0%, 89%, 100% { transform: translate(0, 0); filter: drop-shadow(0 0 2.5rem rgba(143, 211, 255, 0.18)); }
+  89.5%         { transform: translate(-3px, 1px); filter: drop-shadow(0 0 3rem rgba(143, 211, 255, 0.7)); }
+  90.5%         { transform: translate(3px, -1px); }
+  91.5%         { transform: translate(-2px, 0); filter: drop-shadow(0 0 3rem rgba(143, 211, 255, 0.6)); }
+  93%           { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flash, h1 img { animation: none; }
+}

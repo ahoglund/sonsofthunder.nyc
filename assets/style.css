@@ -71,6 +71,43 @@ h1 img {
   border: 0;
 }
 
+.contact {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 4rem;
+  text-align: center;
+}
+.contact li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.contact span {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--bolt);
+}
+.contact a {
+  font-family: system-ui, sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  color: var(--sand);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(243, 194, 122, 0.35);
+  padding-bottom: 2px;
+  overflow-wrap: anywhere;
+}
+.contact a:hover,
+.contact a:focus-visible {
+  color: #fff;
+  border-bottom-color: var(--bolt);
+  text-shadow: 0 0 0.8rem rgba(143, 211, 255, 0.6);
+}
+
 footer {
   padding-block: 1.5rem;
   text-align: center;
